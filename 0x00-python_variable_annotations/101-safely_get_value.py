@@ -8,6 +8,7 @@ x = TypeVar("T")
 
 def safely_get_value(dct: Mapping, key: Any,
                      default: Union[x, None] = None) -> Union[Any, x]:
+    """Safely get a value based on a key"""
     if key in dct:
         return dct[key]
     else:
