@@ -4,19 +4,21 @@ You will spawn wait_random n times with the specified max_delay.
 wait_n should return the list of all the delays (float values).
 """
 import asyncio
+from typing import List
 
 wait_random = __import__('0-basic_async_syntax').wait_random
 
 
-async def wait_n(n: int, max_delay: any) -> list:
-    """Gets a list of delays from wait_random
+async def wait_n(n: int, max_delay: int) -> List[float]:
+    """Spawns wait_random n times and returns a list of delays.
 
     Args:
-        n (int): The number of iterations
-        max_delay (int): Maximum number of seconds to wait. Default is 10.
+        n (int): The number of times to call wait_random.
+        max_delay (int): Maximum number of seconds to wait.
 
     Returns:
-        float: A random float between 0 and max_delay.
+        List[float]: A list of delays in ascending order.
     """
-    result = sorted([await wait_random(max_delay) for i in range(n)])
-    return result
+    tasks = [wait_random(max_delay) for _ in range(n)]
+    results = await asyncio.gather(*tasks)
+    return sorted(results)
