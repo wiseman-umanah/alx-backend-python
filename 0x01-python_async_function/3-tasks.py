@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """Module with function task_wait_random that
 takes an integer max_delay and returns a asyncio.Task"""
 import asyncio
