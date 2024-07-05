@@ -48,4 +48,3 @@ class TestGetJson(unittest.TestCase):
             print(result)
             self.assertEqual(result, test_payload)
             mock_get.assert_called_once_with(test_url)
-        
